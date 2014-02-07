@@ -1,0 +1,17 @@
+---
+galaxy_info:
+  author: Sergey Korolev
+  description: Configures nullmailer in Debian-like systems
+  license: MIT
+  platforms:
+  - name: Ubuntu
+    versions:
+    - all
+  - name: Debian
+    versions:
+    - all
+  categories:
+  - networking
+  - system
+dependencies: []
+  

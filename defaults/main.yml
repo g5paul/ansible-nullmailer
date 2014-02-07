@@ -1,0 +1,5 @@
+---
+# defaults file for nullmailer
+apt_cache_valid_time: 3600
+nullmailer_remotes:
+  - mail

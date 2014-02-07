@@ -1,0 +1,33 @@
+---
+# tasks file for nullmailer
+- name: Install packages
+  apt: pkg=nullmailer state=installed update_cache=yes cache_valid_time={{ apt_cache_valid_time }}
+  when: ansible_os_family == "Debian"
+
+- name: Enable service
+  service:
+    name: nullmailer
+    enabled: yes
+
+- name: Create remotes config
+  template: src=remotes.j2 dest=/etc/nullmailer/remotes mode=0644
+  notify: reload nullmailer
+
+- name: Crete defaultdomain config
+  file: dest=/etc/nullmailer/defaultdomain content="{{ nullmailer_defaultdomain }}" mode=0644
+  notify: reload nullmailer
+  when: if nullmailer_defaultdomain is defined
+
+- name: Create defaulthost config
+  file: dest=/etc/nullmailer/defaulthost content="{{ nullmailer_defaulthost }}" mode=0644
+  notify: reload nullmailer
+  when: if nullmailer_defaulthost is defined
+
+- name: Create me config
+  file: dest=/etc/nullmailer/me content="{{ nullmailer_me }}" mode=0644
+  notify: reload nullmailer
+  when: if nullmailer_me is defined
+
+- name: Create mailname
+  template: src=mailname.j2 dest=/etc/mailname mode=0644
+  notify: reload nullmailer
