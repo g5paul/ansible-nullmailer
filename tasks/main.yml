@@ -13,7 +13,7 @@
   template: src=remotes.j2 dest=/etc/nullmailer/remotes mode=0644
   notify: reload nullmailer
 
-- name: Crete defaultdomain config
+- name: Create defaultdomain config
   file: dest=/etc/nullmailer/defaultdomain content="{{ nullmailer_defaultdomain }}" mode=0644
   notify: reload nullmailer
   when: if nullmailer_defaultdomain is defined
