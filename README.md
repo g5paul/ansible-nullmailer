@@ -1,3 +1,7 @@
+Deprecation warnind
+========
+Unmaintained project. Please, use good alternative: [debops.nullmailer](https://galaxy.ansible.com/debops/nullmailer/)
+
 nullmailer
 ========
 
